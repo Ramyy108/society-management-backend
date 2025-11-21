@@ -2,6 +2,8 @@ services:
   # The Backend API Service
   - type: web
     name: society-management-backend
+    # ⭐️ NEW: EXPLICITLY set the runtime to docker ⭐️
+    runtime: docker
     # Use the Dockerfile in the repository root
     dockerfilePath: Dockerfile
 
@@ -10,10 +12,11 @@ services:
       - key: PORT
         value: "8080" # Standard Spring Boot port
 
-      # ⭐️ DATABASE CONNECTION VARIABLES ⭐️
+      # ⭐️ DATABASE CONNECTION VARIABLES (These should already have your values) ⭐️
       - key: SPRING_DATASOURCE_URL
         value: "jdbc:postgresql://db.pximtggqmohthllmud.supabase.co:5432/postgres" # YOUR URL
       - key: SPRING_DATASOURCE_USERNAME
         value: "postgres" # Confirmed
       - key: SPRING_DATASOURCE_PASSWORD
-        value: "Ramyy.17" # 🚨 REPLACE THIS WITH YOUR SUPABASE PASSWORD
+        value: "Ramyy.17"
+        # 🚨 YOUR ACTUAL PASSWORD
