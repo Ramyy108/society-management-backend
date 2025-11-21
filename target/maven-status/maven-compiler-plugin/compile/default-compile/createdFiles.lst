@@ -1,0 +1,3 @@
+com\society\config\SecurityConfig.class
+com\society\service\UserDetailsServiceImpl.class
+com\society\config\FakeTokenFilter.class
