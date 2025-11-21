@@ -1,22 +1,21 @@
+# This Blueprint file is self-contained and explicitly forces Docker as the runtime.
 services:
-  # The Backend API Service
   - type: web
     name: society-management-backend
-    # ⭐️ NEW: EXPLICITLY set the runtime to docker ⭐️
+    
+    # ⭐️ CRITICAL FIX: The runtime declaration must be here ⭐️
     runtime: docker
-    # Use the Dockerfile in the repository root
+    
     dockerfilePath: Dockerfile
-
-    # Port to expose
+    
     envVars:
       - key: PORT
-        value: "8080" # Standard Spring Boot port
+        value: "8080"
 
-      # ⭐️ DATABASE CONNECTION VARIABLES (These should already have your values) ⭐️
+      # Database Credentials (Check your password carefully!)
       - key: SPRING_DATASOURCE_URL
-        value: "jdbc:postgresql://db.pximtggqmohthllmud.supabase.co:5432/postgres" # YOUR URL
+        value: "jdbc:postgresql://db.pximtggqmohthllmud.supabase.co:5432/postgres"
       - key: SPRING_DATASOURCE_USERNAME
-        value: "postgres" # Confirmed
+        value: "postgres"
       - key: SPRING_DATASOURCE_PASSWORD
         value: "Ramyy.17"
-        # 🚨 YOUR ACTUAL PASSWORD
