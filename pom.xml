@@ -7,7 +7,8 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.5.7</version>
+        <!-- ⭐️ CRITICAL FIX: CHANGED VERSION FROM 3.5.7 TO 3.1.0 TO BYPASS THE 500 ERROR ⭐️ -->
+        <version>3.1.0</version>
         <relativePath/>
     </parent>
 
@@ -41,7 +42,7 @@
             <artifactId>spring-boot-starter-validation</artifactId>
         </dependency>
 
-        <!-- ⭐️ POSTGRESQL CONNECTOR FOR SUPABASE ⭐️ -->
+        <!-- POSTGRESQL CONNECTOR FOR SUPABASE -->
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
@@ -91,7 +92,7 @@
                 </configuration>
             </plugin>
 
-            <!-- Spring Boot plugin -->
+            <!-- Spring Boot plugin is inherited from parent -->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
