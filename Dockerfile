@@ -14,7 +14,8 @@ COPY src src
 
 # Make the wrapper script executable and run the Maven build
 RUN chmod +x mvnw
-RUN ./mvnw clean install -DskipTests
+# ⭐️ CHANGE THIS LINE ⭐️
+RUN ./mvnw -Dmaven.wagon.http.ssl.insecure=true -Dmaven.wagon.http.ssl.allowall=true clean install -DskipTests
 
 # --- Second Stage: Create the smaller runtime image ---
 FROM eclipse-temurin:17-jre-jammy
