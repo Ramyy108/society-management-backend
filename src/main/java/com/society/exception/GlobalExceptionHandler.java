@@ -12,7 +12,8 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-import org.springframework.web.servlet.resource.NoResourceFoundException;
+// ⭐️ CRITICAL FIX 1: Changed import from NoResourceFoundException to NoHandlerFoundException ⭐️
+import org.springframework.web.servlet.NoHandlerFoundException;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {
@@ -35,18 +36,19 @@ public class GlobalExceptionHandler {
     public ResponseEntity<Map<String, Object>> handleValidationErrors(MethodArgumentNotValidException ex) {
         Map<String, Object> body = new HashMap<>();
         Map<String, String> fieldErrors = ex.getBindingResult()
-            .getFieldErrors()
-            .stream()
-            .collect(Collectors.toMap(FieldError::getField, FieldError::getDefaultMessage));
+                .getFieldErrors()
+                .stream()
+                .collect(Collectors.toMap(FieldError::getField, FieldError::getDefaultMessage));
         body.put("error", "Validation failed");
         body.put("details", fieldErrors);
         return new ResponseEntity<>(body, new HttpHeaders(), HttpStatus.BAD_REQUEST);
     }
 
-    @ExceptionHandler(NoResourceFoundException.class)
-    public ResponseEntity<Map<String, String>> handleStaticNotFound(NoResourceFoundException ex) {
+    // ⭐️ CRITICAL FIX 2: Changed method signature and @ExceptionHandler annotation ⭐️
+    @ExceptionHandler(NoHandlerFoundException.class)
+    public ResponseEntity<Map<String, String>> handleNoHandlerFound(NoHandlerFoundException ex) {
         Map<String, String> body = new HashMap<>();
-        body.put("error", "Static resource not found: " + ex.getMessage());
+        body.put("error", "Resource not found: " + ex.getMessage());
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(body);
     }
 
