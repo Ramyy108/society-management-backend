@@ -40,7 +40,7 @@ public class AuthService {
 
         String token = "fake-token-" + user.getId() + "-OWNER";
 
-        // ➡️ FIX: Direct 6-argument constructor call (replaces builder) ⬅️
+
         return new AuthResponse(
                 user.getId(),
                 user.getEmail(),
@@ -68,7 +68,7 @@ public class AuthService {
 
         String token = "fake-token-" + user.getId() + "-ADMIN";
 
-        // ➡️ FIX: Direct 6-argument constructor call (replaces builder) ⬅️
+
         return new AuthResponse(
                 user.getId(),
                 user.getEmail(),
@@ -92,7 +92,7 @@ public class AuthService {
         String roleString = user.getRole().name();
         String fakeToken = "fake-token-" + user.getId() + "-" + roleString;
 
-        // ➡️ FIX: Direct 6-argument constructor call (replaces builder) ⬅️
+
         return new AuthResponse(
                 user.getId(),
                 user.getEmail(),

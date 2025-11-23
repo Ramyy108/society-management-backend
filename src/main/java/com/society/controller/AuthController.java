@@ -26,7 +26,6 @@ public class AuthController {
         return ResponseEntity.ok(authService.registerOwner(request));
     }
 
-    // ➡️ FIX: Added the necessary register-admin endpoint ⬅️
     @PostMapping("/register-admin")
     public ResponseEntity<AuthResponse> registerAdmin(@Valid @RequestBody RegisterRequest request) {
         return ResponseEntity.ok(authService.registerAdmin(request));
@@ -44,7 +43,7 @@ public class AuthController {
             response.put("email", authentication.getName());
             response.put("role", authentication.getAuthorities().iterator().next().getAuthority().replace("ROLE_", ""));
         } else {
-            // This temporary bypass is now redundant since the FakeTokenFilter works, but we keep it for now.
+
             response.put("email", "temp.owner@example.com");
             response.put("role", "OWNER");
             response.put("note", "TEMPORARY BYPASS: Security context not populated.");

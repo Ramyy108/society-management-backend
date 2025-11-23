@@ -24,7 +24,7 @@ public class BillDTO {
     private String status;
     private LocalDateTime paymentDate;
 
-    // Optional: Used for Admin generation input
+
     private String ownerEmail;
 }
 

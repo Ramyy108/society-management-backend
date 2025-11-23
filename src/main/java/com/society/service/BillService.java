@@ -25,7 +25,7 @@ public class BillService {
     private final BillRepository billRepository;
     private final UserRepository userRepository;
 
-    // --- ADMIN ACCESS: Generate Bills ---
+
 
     @Transactional
     public void generateMonthlyBills(BillDTO billInput) {
@@ -58,7 +58,7 @@ public class BillService {
         }
     }
 
-    // --- OWNER ACCESS: View Bills ---
+
 
     public List<BillDTO> getOwnerBills() {
         String email = SecurityContextHolder.getContext().getAuthentication().getName();
@@ -71,7 +71,7 @@ public class BillService {
                 .collect(Collectors.toList());
     }
 
-    // --- ADMIN ACCESS: View All Bills ---
+
 
     public List<BillDTO> getAllBills() {
         return billRepository.findAllByOrderByCreatedAtDesc()
@@ -80,7 +80,7 @@ public class BillService {
                 .collect(Collectors.toList());
     }
 
-    // --- ADMIN/OWNER ACCESS: Pay Bill ---
+
 
     @Transactional
     public BillDTO markBillAsPaid(Long billId) {
@@ -93,14 +93,14 @@ public class BillService {
 
         bill.setStatus(Bill.Status.PAID);
 
-        // ➡️ FIX: THIS LINE NOW COMPILERS ⬅️
+
         bill.setPaymentDate(LocalDateTime.now());
 
         bill = billRepository.save(bill);
         return convertToDTO(bill);
     }
 
-    // --- Conversion Helper ---
+
 
     private BillDTO convertToDTO(Bill bill) {
         BillDTO dto = new BillDTO();
@@ -118,7 +118,7 @@ public class BillService {
 
         dto.setDueDate(bill.getDueDate());
         dto.setStatus(bill.getStatus() != null ? bill.getStatus().name() : Bill.Status.PENDING.name());
-        dto.setPaymentDate(bill.getPaymentDate()); // Mapped the new field
+        dto.setPaymentDate(bill.getPaymentDate());
 
         return dto;
     }

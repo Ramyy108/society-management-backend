@@ -33,41 +33,18 @@ public class CorsConfig {
         config.setAllowCredentials(true);
 
 
-
-// ➡️ FIX 1: ADD VERCELL URL HERE ⬅️
-
         config.addAllowedOrigin("http://localhost:5173");
-
         config.addAllowedOrigin("https://society-management-frontend-ten.vercel.app");
-
         config.addAllowedOrigin("https://society-management-backend-qqme.onrender.com");
-// We often use allow all origins during final deployment to be safe:
-
-// config.addAllowedOrigin("*"); // Use this if the two lines above don't work.
-
-
-
-// ➡️ FIX 2: ADD REQUIRED HEADERS HERE ⬅️
-
         config.addAllowedHeader("Origin");
 
         config.addAllowedHeader("Content-Type");
-
         config.addAllowedHeader("Accept");
 
-        config.addAllowedHeader("Authorization"); // CRITICAL for sending the fake (and later, real) token
-
-
-
-// config.addAllowedHeader("*"); // Use this if the lines above don't work.
-
-
-
+        config.addAllowedHeader("Authorization");
         config.addAllowedMethod("*");
 
-
-
-        source.registerCorsConfiguration("/**", config); // Use "/**" for all paths
+        source.registerCorsConfiguration("/**", config);
 
         return new CorsFilter(source);
 

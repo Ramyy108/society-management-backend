@@ -17,7 +17,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class NoticeController {
     
-    // <-- do NOT initialize to null, let Lombok generate constructor for injection
+
     private final NoticeService noticeService;
     
     @PostMapping
@@ -35,7 +35,7 @@ public class NoticeController {
     @GetMapping("/mine")
     @PreAuthorize("hasRole('OWNER')")
     public ResponseEntity<List<NoticeDTO>> getOwnerNotices() {
-        // If you implement owner-specific fetching later, replace this call.
+
         return ResponseEntity.ok(noticeService.getAllNotices());
     }
     

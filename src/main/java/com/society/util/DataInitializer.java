@@ -70,7 +70,7 @@ public class DataInitializer implements CommandLineRunner {
                 log.info("Sample owner already exists");
             }
         } catch (Exception e) {
-            // Log full stack so you can debug, but don't crash the app startup
+
             log.error("DataInitializer error: {}", e.getMessage(), e);
         }
     }

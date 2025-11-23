@@ -53,7 +53,6 @@ public class Bill {
     @Column(nullable = false)
     private LocalDateTime createdAt;
 
-    // ➡️ FIX: ADDED MISSING FIELD TO RESOLVE COMPILATION ERROR ⬅️
     private LocalDateTime paymentDate;
 
     public enum Status {

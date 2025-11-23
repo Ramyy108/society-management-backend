@@ -1,9 +1,7 @@
-# This Blueprint file is self-contained and explicitly forces Docker as the runtime.
 services:
   - type: web
     name: society-management-backend
-    
-    # ⭐️ CRITICAL FIX: The runtime declaration must be here ⭐️
+
     runtime: docker
     
     dockerfilePath: Dockerfile
@@ -12,7 +10,6 @@ services:
       - key: PORT
         value: "8080"
 
-      # Database Credentials (Check your password carefully!)
       - key: SPRING_DATASOURCE_URL
         value: "jdbc:postgresql://db.pximtggqmohthllmud.supabase.co:5432/postgres"
       - key: SPRING_DATASOURCE_USERNAME

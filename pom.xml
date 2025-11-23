@@ -7,7 +7,6 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <!-- ⭐️ CRITICAL FIX: CHANGED VERSION FROM 3.5.7 TO 3.1.0 TO BYPASS THE 500 ERROR ⭐️ -->
         <version>3.1.0</version>
         <relativePath/>
     </parent>

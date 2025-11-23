@@ -23,8 +23,7 @@ public class ComplaintService {
 
     public ComplaintDTO createComplaint(ComplaintDTO complaintDTO) {
 
-        // REVERTED: Now securely get the user's email from the populated Security Context.
-        // The FakeTokenFilter ensures this context is populated if a valid token is present.
+
         String email = SecurityContextHolder.getContext().getAuthentication().getName();
 
         User owner = userRepository.findByEmail(email)

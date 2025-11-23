@@ -29,7 +29,7 @@ public class SecurityConfig {
         this.passwordEncoder = passwordEncoder;
     }
 
-    // --- Core Security Beans ---
+
 
     @Bean
     public DaoAuthenticationProvider authenticationProvider() {
@@ -44,13 +44,13 @@ public class SecurityConfig {
         return config.getAuthenticationManager();
     }
 
-    // ADDED: Define the FakeTokenFilter as a bean
+
     @Bean
     public FakeTokenFilter fakeTokenFilter() {
         return new FakeTokenFilter(userDetailsService);
     }
 
-    // --- Security Filter Chain ---
+
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
@@ -61,25 +61,24 @@ public class SecurityConfig {
                 .sessionManagement(s -> s.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
 
                 .authorizeHttpRequests(auth -> auth
-                        // PUBLIC ACCESS: Login, Register, Root Path
+
                         .requestMatchers("/api/auth/**").permitAll()
                         .requestMatchers("/").permitAll()
 
-                        // REVERTED RULES: Endpoints are now SECURE and check roles
-                        // OWNERs can create complaints
+
                         .requestMatchers(HttpMethod.POST, "/api/complaints").hasRole("OWNER")
-                        // All logged-in users can view complaints
+
                         .requestMatchers(HttpMethod.GET, "/api/complaints").authenticated()
-                        // Only ADMINs can resolve complaints
+
                         .requestMatchers(HttpMethod.PUT, "/api/complaints/**").hasRole("ADMIN")
 
-                        // All other requests MUST be authenticated
+
                         .anyRequest().authenticated()
                 );
 
         http.authenticationProvider(authenticationProvider());
 
-        // ADDED: Register the filter to run BEFORE the standard authentication checks
+
         http.addFilterBefore(fakeTokenFilter(), UsernamePasswordAuthenticationFilter.class);
 
         return http.build();

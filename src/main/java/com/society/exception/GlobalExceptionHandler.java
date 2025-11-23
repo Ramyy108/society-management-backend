@@ -44,7 +44,7 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(body, new HttpHeaders(), HttpStatus.BAD_REQUEST);
     }
 
-    // ⭐️ CRITICAL FIX 2: Changed method signature and @ExceptionHandler annotation ⭐️
+
     @ExceptionHandler(NoHandlerFoundException.class)
     public ResponseEntity<Map<String, String>> handleNoHandlerFound(NoHandlerFoundException ex) {
         Map<String, String> body = new HashMap<>();
@@ -55,7 +55,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(Exception.class)
     public ResponseEntity<Map<String, String>> handleGenericException(Exception ex) {
         Map<String, String> response = new HashMap<>();
-        // Avoid returning null message; prefer a generic hint if message is empty
+
         String msg = ex.getMessage() != null ? ex.getMessage() : "Internal server error";
         response.put("error", msg);
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);

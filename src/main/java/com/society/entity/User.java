@@ -10,7 +10,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 import java.util.Collections;
-import java.util.List; // Import List for getAuthorities return type
+import java.util.List;
 
 @Entity
 @Table(name = "users")
@@ -26,7 +26,7 @@ public class User implements UserDetails {
     private String email;
 
     @Column(nullable = false)
-    private String password; // The hashed password
+    private String password;
 
     @Column(nullable = false)
     private String name;
@@ -90,7 +90,7 @@ public class User implements UserDetails {
         return true;
     }
 
-    // --- Enum for Role ---
+
     public enum Role {
         ADMIN, OWNER
     }
