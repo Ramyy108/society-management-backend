@@ -40,7 +40,7 @@ public class CorsConfig {
 
         config.addAllowedOrigin("https://society-management-frontend-ten.vercel.app");
 
-
+        config.addAllowedOrigin("https://society-management-backend-qqme.onrender.com");
 // We often use allow all origins during final deployment to be safe:
 
 // config.addAllowedOrigin("*"); // Use this if the two lines above don't work.
