@@ -1,16 +1,12 @@
 package com.society.dto;
-
 import java.time.LocalDateTime;
-
 public class NoticeDTO {
     private Long id;
     private String title;
     private String description;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
-
     public NoticeDTO() {}
-
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
     public String getTitle() { return title; }

@@ -5,7 +5,6 @@ C:\Users\Ram\Desktop\society-management\backend\src\main\java\com\society\dto\Re
 C:\Users\Ram\Desktop\society-management\backend\src\main\java\com\society\dto\BillDTO.java
 C:\Users\Ram\Desktop\society-management\backend\src\main\java\com\society\repository\UserRepository.java
 C:\Users\Ram\Desktop\society-management\backend\src\main\java\com\society\service\AuthService.java
-C:\Users\Ram\Desktop\society-management\backend\src\main\java\com\society\controller\Valid.java
 C:\Users\Ram\Desktop\society-management\backend\src\main\java\com\society\dto\AuthResponse.java
 C:\Users\Ram\Desktop\society-management\backend\src\main\java\com\society\SocietyManagementApplication.java
 C:\Users\Ram\Desktop\society-management\backend\src\main\java\com\society\controller\NoticeController.java
@@ -13,7 +12,6 @@ C:\Users\Ram\Desktop\society-management\backend\src\main\java\com\society\config
 C:\Users\Ram\Desktop\society-management\backend\src\main\java\com\society\controller\ComplaintController.java
 C:\Users\Ram\Desktop\society-management\backend\src\main\java\com\society\repository\FlatRepository.java
 C:\Users\Ram\Desktop\society-management\backend\src\main\java\com\society\repository\ComplaintRepository.java
-C:\Users\Ram\Desktop\society-management\backend\src\main\java\com\society\dto\Email.java
 C:\Users\Ram\Desktop\society-management\backend\src\main\java\com\society\config\PasswordConfig.java
 C:\Users\Ram\Desktop\society-management\backend\src\main\java\com\society\service\NoticeService.java
 C:\Users\Ram\Desktop\society-management\backend\src\main\java\com\society\service\UserDetailsServiceImpl.java

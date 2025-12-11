@@ -1,9 +1,7 @@
 package com.society.entity;
-
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -25,7 +23,6 @@ import lombok.AllArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Bill {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -52,13 +49,10 @@ public class Bill {
 
     @Column(nullable = false)
     private LocalDateTime createdAt;
-
     private LocalDateTime paymentDate;
-
     public enum Status {
         PENDING, PAID, OVERDUE;
     }
-
     @PrePersist
     protected void onCreate() {
         this.createdAt = LocalDateTime.now();

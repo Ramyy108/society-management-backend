@@ -15,7 +15,6 @@ com\society\SocietyManagementApplication$PublicController.class
 com\society\dto\BillDTO.class
 com\society\SocietyManagementApplication.class
 com\society\entity\Flat.class
-com\society\dto\Email.class
 com\society\exception\GlobalExceptionHandler.class
 com\society\config\SecurityConfig.class
 com\society\service\NoticeService.class
@@ -35,5 +34,4 @@ com\society\util\DataInitializer.class
 com\society\service\UserDetailsServiceImpl.class
 com\society\controller\AuthController.class
 com\society\config\FakeTokenFilter.class
-com\society\controller\Valid.class
 com\society\entity\Complaint$Status.class

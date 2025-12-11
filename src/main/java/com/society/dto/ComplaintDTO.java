@@ -1,7 +1,5 @@
 package com.society.dto;
-
 import java.time.LocalDateTime;
-
 public class ComplaintDTO {
     private Long id;
     private String ownerName;
@@ -11,9 +9,7 @@ public class ComplaintDTO {
     private String status;
     private LocalDateTime createdAt;
     private LocalDateTime resolvedAt;
-
     public ComplaintDTO() {}
-
     public Long getId() { return id; }
     public void setId(Long id) { this.id = id; }
     public String getOwnerName() { return ownerName; }

@@ -1,5 +1,4 @@
 package com.society.config;
-
 import com.society.service.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -19,18 +18,13 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
-
     private final UserDetailsServiceImpl userDetailsService;
     private final PasswordEncoder passwordEncoder;
-
     @Autowired
     public SecurityConfig(UserDetailsServiceImpl userDetailsService, PasswordEncoder passwordEncoder) {
         this.userDetailsService = userDetailsService;
         this.passwordEncoder = passwordEncoder;
     }
-
-
-
     @Bean
     public DaoAuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
@@ -38,20 +32,14 @@ public class SecurityConfig {
         authProvider.setPasswordEncoder(passwordEncoder);
         return authProvider;
     }
-
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration config) throws Exception {
         return config.getAuthenticationManager();
     }
-
-
     @Bean
     public FakeTokenFilter fakeTokenFilter() {
         return new FakeTokenFilter(userDetailsService);
     }
-
-
-
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
@@ -59,28 +47,17 @@ public class SecurityConfig {
                 .httpBasic(AbstractHttpConfigurer::disable)
                 .formLogin(AbstractHttpConfigurer::disable)
                 .sessionManagement(s -> s.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-
                 .authorizeHttpRequests(auth -> auth
 
                         .requestMatchers("/api/auth/**").permitAll()
                         .requestMatchers("/").permitAll()
-
-
-                        .requestMatchers(HttpMethod.POST, "/api/complaints").hasRole("OWNER")
-
+                        .requestMatchers(HttpMethod.POST, "/api/complaints").hasAuthority("OWNER")
                         .requestMatchers(HttpMethod.GET, "/api/complaints").authenticated()
-
-                        .requestMatchers(HttpMethod.PUT, "/api/complaints/**").hasRole("ADMIN")
-
-
+                        .requestMatchers(HttpMethod.PUT, "/api/complaints/**").hasAuthority("ADMIN")
                         .anyRequest().authenticated()
                 );
-
         http.authenticationProvider(authenticationProvider());
-
-
         http.addFilterBefore(fakeTokenFilter(), UsernamePasswordAuthenticationFilter.class);
-
         return http.build();
     }
 }
